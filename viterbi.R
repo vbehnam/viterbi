@@ -8,31 +8,11 @@
 
 viterbi <- function(emission, transition, initial, observations) {
   
-  # these are checks for invalid inputs
+  # helper method that checks if the inputs are valid
+  checkInputs(emission, transition, initial, observations)
+  
 
   numStates <- nrow(transition)
-  
-  # checks if the dimensions of the matrices line up
-  if (nrow(emission) != numStates) {
-    stop("the dimensions of the emission matrix and transition matrix don't line up!")
-  }
-  
-  if (nrow(transition) != ncol(transition)) {
-    stop("the transition matrix is not square!")
-  }
-  
-  if (length(initial) != numStates) {
-    stop("the length of the initial vector of probabilities is not equal to the number of states in the transition matrix!")
-  }
-  
-  # checks if the vectors are actually vectors
-  if (is.vector(initial) != TRUE || is.vector(observations) != TRUE) {
-    stop("one of the vectors is not actually a vector!")  
-  }
-  
-  
-  
-  # this is the algorithm after we have checked for invalid inputs
   
   numObs <- length(observations)
   
@@ -98,5 +78,48 @@ viterbi <- function(emission, transition, initial, observations) {
   }
 
   return(MLP)
+  
+}
+
+# helper method that checks if inputs are valid. If any of the inputs are invalid, an error message is thrown.
+checkInputs <- function(emission, transition, initial, observations){
+  
+  numStates <- nrow(transition)
+  
+  # checks if the dimensions of the matrices line up
+  if (nrow(emission) != numStates) {
+    stop("the dimensions of the emission matrix and transition matrix don't line up!")
+  }
+  
+  if (nrow(transition) != ncol(transition)) {
+    stop("the transition matrix is not square!")
+  }
+  
+  if (length(initial) != numStates) {
+    stop("the length of the initial vector of probabilities is not equal to the number of states in the transition matrix!")
+  }
+  
+  # checks if the vectors are actually vectors
+  if (is.vector(initial) != TRUE || is.vector(observations) != TRUE) {
+    stop("one of the vectors is not actually a vector!")  
+  }
+  
+  # the next three check if probabilities sum up to 1
+  
+  if (sum(initial) != 1) {
+    stop("the initial vector does not sum up to 1!")
+  }
+  
+  for (i in 1:numStates) {
+    if (sum(emission[i,]) != 1) {
+      stop("one or more of the rows of the emission matrix do not sum to 1!")
+    }
+  }
+  
+  for (i in 1:numStates) {
+    if (sum(transition[i,]) != 1) {
+      stop("one or more of the rows of the transition matrix do not sum to 1!")
+    }
+  }
   
 }
