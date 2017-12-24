@@ -38,9 +38,9 @@ viterbi <- function(emission, transition, initial, observations) {
   
   # initialize the two matrices, stateSeq will store the most likely states up until this point, while prob state
   # is the corresponding likelihood
-  probSeq = matrix(data=0, nrow=numStates, ncol=numObs)
+  probSeq <- matrix(data=0, nrow=numStates, ncol=numObs)
   
-  stateSeq = matrix(data=0, nrow=numStates, ncol=numObs)
+  stateSeq <- matrix(data=0, nrow=numStates, ncol=numObs)
   
   # fill in first columns of both matrices
   for (i in 1:numStates) {
