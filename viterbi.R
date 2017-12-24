@@ -1,13 +1,12 @@
 
-# Parameters: emission matrix, an M x N matrix, with hidden states on the rows and observed states on the columns. emission[j, k] is the probability of observing state k from hidden state j
+# Parameters: emission matrix, an M x N matrix, where emission[j, k] is the probability of observing state k from hidden state j
 # transition matrix, an N x N matrix, with transition[j, k] showing the probability of transitioning from state k to state j
 # initial is a N x 1 vector of initial probabilities for hidden states. i.e. the p(x=i) at time t=0
 # observations is a L x 1 vector of observations
-# states is a N x 1 vector of all possible hidden states i.e. the hidden state space
 
 # Output: An L x 1 vector of the most likely hidden state sequence
 
-viterbi <- function(emission, transition, initial, observations, states) {
+viterbi <- function(emission, transition, initial, observations) {
   
   # these are checks for invalid inputs
 
@@ -27,7 +26,7 @@ viterbi <- function(emission, transition, initial, observations, states) {
   }
   
   # checks if the vectors are actually vectors
-  if (is.vector(initial) != TRUE || is.vector(observations) != TRUE || is.vector(states) != TRUE) {
+  if (is.vector(initial) != TRUE || is.vector(observations) != TRUE) {
     stop("one of the vectors is not actually a vector!")  
   }
   
