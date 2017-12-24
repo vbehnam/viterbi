@@ -1,7 +1,7 @@
 
 # Parameters: emission matrix, an M x N matrix, where emission[j, k] is the probability of observing state k from hidden state j
 # transition matrix, an N x N matrix, with transition[j, k] showing the probability of transitioning from state k to state j
-# initial is a N x 1 vector of initial probabilities for hidden states. i.e. the p(x=i) at time t=0
+# initial is a N x 1 vector of initial probabilities for hidden states. i.e. the p(x=i) at time t=1
 # observations is a L x 1 vector of observations
 
 # Output: An L x 1 vector of the most likely hidden state sequence
