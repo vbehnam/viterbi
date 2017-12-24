@@ -8,9 +8,8 @@
 
 viterbi <- function(emission, transition, initial, observations) {
   
-  # helper method that checks if the inputs are valid
+  # helper method that checks if the inputs are valid. if not, it returns an error message
   checkInputs(emission, transition, initial, observations)
-  
 
   numStates <- nrow(transition)
   
@@ -80,6 +79,7 @@ viterbi <- function(emission, transition, initial, observations) {
   return(MLP)
   
 }
+
 
 # helper method that checks if inputs are valid. If any of the inputs are invalid, an error message is thrown.
 checkInputs <- function(emission, transition, initial, observations){
