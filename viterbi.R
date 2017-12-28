@@ -24,13 +24,11 @@ viterbi <- function(emission, transition, initial, observations) {
   firstObs <- observations[1]
   
   # fill in first columns of both matrices
-  for (i in 1:numStates) {
        
-    probSeq[i,1] <- initial[i]*emission[i,firstObs]
+  probSeq[,1] <- initial[]*emission[,firstObs]
     
-    stateSeq[i,1] <- 0
-    
-  }
+  stateSeq[,1] <- 0
+  
   
   for (i in 2:numObs) {
     
