@@ -6,4 +6,4 @@ The algorithm has a helper method that checks for invalid inputs, such as incong
 
 This implementation only works with discrete & finite transition matrices, emission matrices and vector of initial probabilities.
 
-The algorithmic runtime is O((M ^ 2) * L), where M is the number of states in the state space, and L is the number of observations (or the outpus). This is considered as the optimal runtime of a general, basic Viterbi algorithm.
+The algorithmic runtime is O((M ^ 2) * L), where M is the number of states in the state space, and L is the number of observations (or the outputs). This is considered as the optimal runtime of a standard implementation of the Viterbi algorithm.
